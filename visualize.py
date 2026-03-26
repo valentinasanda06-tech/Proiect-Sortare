@@ -2,7 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-def create_detailed_plots():
+def create_pro_plots():
     try:
         df = pd.read_csv('rezultate.csv') 
     except FileNotFoundError:
@@ -14,22 +14,22 @@ def create_detailed_plots():
     g = sns.catplot(
         data=df, 
         kind="bar",
-        x="N", y="Secunde", hue="Algoritm",
-        col="Tip_Date", col_wrap=3,
-        palette="magma", height=5, aspect=1.2,
-        sharey=True
+        x="Tip_Date", y="Secunde", hue="Algoritm",
+        row="N",
+        palette="viridis", height=4, aspect=3,
+        sharey=False
     )
 
     for ax in g.axes.flat:
         ax.set_yscale("log")
-        ax.set_xticklabels(ax.get_xticklabels(), rotation=45)
+        ax.grid(True, which="both", ls="-", alpha=0.2)
 
-    g.set_axis_labels("Număr elemente (N)", "Secunde (Log Scale)")
-    g.set_titles("{col_name}")
-    g.fig.suptitle('Analiza Detaliată a Algoritmilor de Sortare pe Scenarii', fontsize=18, y=1.05)
+    g.set_axis_labels("Scenariu Date (Tip)", "Timp Execuție (Secunde - Log Scale)")
+    g.set_titles("Dimensiune Listă: N = {row_name}")
+    g.fig.suptitle('Benchmark Sortare: Influența Tipului de Date vs. Scalabilitatea N', fontsize=16, y=1.02)
 
-    plt.savefig('grafic_performanta.png', dpi=300, bbox_inches='tight')
-    print("Succes! Graficul detaliat a fost salvat.")
+    plt.savefig('grafic_final.png', dpi=300, bbox_inches='tight')
+    print("Graficul a fost generat: grafic_final.png")
 
 if __name__ == "__main__":
-    create_detailed_plots()
+    create_pro_plots()
