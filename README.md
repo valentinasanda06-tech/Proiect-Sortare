@@ -18,7 +18,7 @@ Rezultatele au fost obținute pe o configurație hardware de ultimă generație,
 
 ## 📈 Rezultatele Experimentului
 Iată o previzualizare a performanței măsurate pe MacBook Pro:
-![Grafic Performanță](grafic_performanta.png)
+![Grafic Performanță](grafic_final.png)
 
 ## 🚀 Ghid de utilizare
 1. **Generarea datelor**:
